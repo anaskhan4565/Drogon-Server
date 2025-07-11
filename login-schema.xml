@@ -1,0 +1,29 @@
+<sbe:messageSchema xmlns:sbe="http://fixprotocol.io/2016/sbe"
+                   package="my.app.messages"
+                   semanticVersion="1.0.0"
+                   version="1"
+                   id="1">
+
+    <types>
+        <!-- ✅ Rename 'char' to something valid, like 'charType' -->
+       
+
+         <composite name="char64str" presence="required">
+    <type name="chars" primitiveType="char" length="64"/>
+  </composite>
+
+        <!-- ✅ Message header -->
+        <composite name="messageHeader" description="Message Header">
+            <type name="blockLength" primitiveType="uint16"/>
+            <type name="templateId" primitiveType="uint16"/>
+            <type name="schemaId" primitiveType="uint16"/>
+            <type name="version" primitiveType="uint16"/>
+        </composite>
+    </types>
+
+    <message name="LoginRequest" id="1" semanticType="logon">
+        <field name="email" id="1" type="char64str"/>
+        <field name="password" id="2" type="char64str"/>
+    </message>
+
+</sbe:messageSchema>
